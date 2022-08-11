@@ -1,0 +1,26 @@
+Ordem de start:
+
+- Grafana
+- Prometheus
+- Loki
+- Promtail
+- Service(Spring Boot, etc...)
+
+Os arquivos loki.yml e promtail.yml devem sem passados como parametros de start: 
+
+- -config.file=/etc/promtail/promtail.yml
+- -config.file=/etc/loki/loki.yml
+
+Verificar os arquivos yml nessa pasta para verificar se estão apontando uns para os outros.
+
+A aplicação requer algumas bibliotecas no pom do spring boot: actuators e prometheus ->
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+<dependency>
+	<groupId>io.micrometer</groupId>
+	<artifactId>micrometer-registry-prometheus</artifactId>
+	<scope>runtime</scope>
+</dependency>

@@ -1,0 +1,4 @@
+docker run --name prometheus -p 9090:9090 -v D:/Docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
+docker run --name loki -p 3100:3100 -v D:/Docker/loki:/etc/loki/ grafana/loki:2.2.1 -config.file=/etc/loki/loki.yml
+docker run --name promtail -p 9080:9080 -p 9081:9081 -p -v D:/Docker/log:/var/log/ -v D:/Docker/promtail:/etc/promtail/ grafana/promtail:2.2.1 -config.file=/etc/promtail/promtail.yml

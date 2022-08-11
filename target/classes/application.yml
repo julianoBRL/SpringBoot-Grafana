@@ -1,0 +1,37 @@
+
+server:
+  port: 8080
+
+info:
+  app:
+    name: Gratheus-Tester
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    mongo:
+      enabled: false
+      
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    hikari:
+      maximum-pool-size: '5'
+      connection-timeout: '60000'
+    url: jdbc:mysql://192.168.0.114/gratheus?useSSL=false&createDatabaseIfNotExist=true
+    password: root
+  main:
+    banner-mode: 'off'
+  jpa:
+    hibernate:
+      ddl-auto: update
+      
+logging:
+  file:
+    path: D:/Docker/log
+  level:
+    org: debug
